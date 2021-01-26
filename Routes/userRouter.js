@@ -10,7 +10,10 @@ const {
   generateToken,
   pickUserProps,
 } = require("../Middleware/auth");
-
+// /node_modules
+// npm-debug.log
+// .DS_Store
+// /*.env
 const router = express.Router();
 // ------------------------------------------web socket------------------------------------------------------------
 const http =require('http').createServer(express)
