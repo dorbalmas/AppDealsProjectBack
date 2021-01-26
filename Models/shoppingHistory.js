@@ -5,7 +5,7 @@ const shoppingHistorySchema = new Schema({
  
     orderDate: { type: Date, default: Date.now() },
     code:String,
-    cartList:[],
+    cartList:[]
 
 }
 );
