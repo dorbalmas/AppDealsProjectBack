@@ -277,6 +277,29 @@ router.put("/cartUpdate/:id", (req, res) => {
     });
 });
 
+// ---------------------------------------------------------------------
+
+// ` https://dealsproject.herokuapp.com/user/allOrdersPerUser/${}`
+router.get("/allOrdersPerUser/:id", (req, res) => {
+  User.findById(req.params.id).then((data) => {
+    res.status(200).json(data.shoppingHistory);
+  });
+});
+
+// ` https://dealsproject.herokuapp.com/user/addOrder/${}`
+router.post("/addOrder/:user_id", async (req, res) => {
+  const newOrder = {
+    code: req.body.code,
+    cartList: req.body.cartList,
+  };
+  await User.updateOne(
+    { _id: req.params.user_id },
+    { $push: { shoppingHistory: newOrder } }
+  );
+  const user = await User.findById(req.params.user_id);
+  res.json(user);
+});
+
 // ----------------------------------------------------------------------
 // ` https://dealsproject.herokuapp.com/user/profileByCategory/${}/${}`
 router.get("/profileByCategory//", (req, res) => {

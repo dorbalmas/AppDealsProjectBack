@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { dishSchema } = require("./dish");
 const { ProfileSchema } = require("../Models/profile");
+const { shoppingHistorySchema } = require("./shoppingHistory");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -12,6 +13,7 @@ const UserSchema = new Schema({
   profile: { type: ProfileSchema, default: {} },
   dishDeals: [dishSchema],
   cart: [dishSchema],
+  shoppingHistory:[shoppingHistorySchema],
   joined: { type: Date, default: Date.now() },
 });
 
